@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import { Text, TextInput, KeyboardAvoidingView, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Text, TextInput, KeyboardAvoidingView, StyleSheet, TouchableOpacity, View ,ScrollView} from 'react-native'
 import { Header, Icon, Slider } from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Container, Content, ActionSheet } from 'native-base';
 import NumberFormat from 'react-number-format';
-import ToggleSwitch from 'toggle-switch-react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import DropDownPicker from 'react-native-dropdown-picker';
-
+import ToggleSwitch from 'toggle-switch-react-native'
 
 
 
 var BUTTONS = ["Clothes", "Shoes", "Bag", "Cosmetics", "Glasses", "Jewllery", "Others"];
 var DESTRUCTIVE_INDEX = 3;
 var CANCEL_INDEX = 7;
-
 
 
 
@@ -31,14 +27,13 @@ class AddItem extends Component {
             school: '',
             price: '',
             category: '',
-            negotiable: false,
-            schools: []
+            negotiable:false
         };
     }
 
 
     continueAddItem = () => {
-        let { name, colors, sizes, tags, location, school, price, category, negotiable } = this.state;
+        let { name, colors, sizes, tags, location, school, price, category,negotiable } = this.state;
         this.props.navigation.navigate('AddItemPhotos', {
             name: name,
             price: price,
@@ -56,7 +51,7 @@ class AddItem extends Component {
 
 
     render() {
-        let { name, tags, location, price, category, negotiable } = this.state;
+        let { name, tags, location, price, category,negotiable } = this.state;
         return (
             <Container>
                 <Header
@@ -69,7 +64,7 @@ class AddItem extends Component {
                 />
                 <KeyboardAvoidingView behavior='padding' style={{ flex: 1, backgroundColor: '#6699ff', justifyContent: 'center' }}>
 
-                    <Content style={{ padding: wp('7') }}>
+                    <ScrollView style={{ padding: wp('7') }}>
                         <TextInput
                             style={styles.input}
                             placeholder='Name of Item'
@@ -170,25 +165,24 @@ class AddItem extends Component {
                             ref={(input) => this.schoolInput = input}
                         />
 
-
-                        <View style={{ paddingBottom: hp('2') }}>
+                        <View style={{ paddingBottom:hp('2') }}>
                             <ToggleSwitch
                                 isOn={this.state.negotiable}
                                 onColor='#004de6'
                                 offColor='#e8e8e8'
                                 label='Negotiable'
-                                labelStyle={{ color: 'rgba(255,255,255,0.7)', fontWeight: '100', fontSize: wp('4') }}
+                                labelStyle={{ color: 'rgba(255,255,255,0.7)', fontWeight: '100' ,fontSize:wp('4') }}
                                 size='medium'
-                                onToggle={(isOn) => this.setState({ negotiable: isOn })}
+                                onToggle={(isOn) => this.setState({negotiable:isOn})}
                             />
                         </View>
                         {/* disabled={!name || !price || !tags || !location || !category} */}
-
-                        <TouchableOpacity disabled={!name || !price || !tags || !location || !category} style={!name || !price || !tags || !location || !category ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.continueAddItem()}>
+                        
+                        <TouchableOpacity   style={!name || !price || !tags || !location || !category ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.continueAddItem()}>
                             <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700' }}>Continue to Add Images</Text>
                         </TouchableOpacity>
 
-                    </Content>
+                    </ScrollView>
                 </KeyboardAvoidingView>
             </Container>
 
@@ -214,13 +208,16 @@ const styles = StyleSheet.create({
         padding: wp('7'),
         borderRadius: wp('2'),
         backgroundColor: '#ccddff',
-        paddingVertical: 15
+        paddingVertical: 15,
+        marginBottom:wp('15')
 
     },
     buttonEnabled: {
         padding: wp('7'),
         borderRadius: wp('2'),
         backgroundColor: '#4d88ff',
-        paddingVertical: 15
+        paddingVertical: 15,
+        marginBottom:wp('15')
+
     }
 })

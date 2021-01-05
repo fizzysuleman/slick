@@ -254,13 +254,12 @@ export default class CartItems extends Component {
     let { cart, finished } = this.state
     return (
       <Container >
-        <Content refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />}>
           {!finished && <View style={{ marginTop: hp('40') }}>
             <Text style={{ fontSize: wp('5'), textAlign: 'center', color: 'grey' }}>Loading Items...</Text>
           </View>}
-          {(cart.length === 0 && finished) ? <View style={{ marginTop: hp('40'), padding: wp('1') }}>
+          {(cart.length === 0 && finished) ? <Content  refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />} style={{ marginTop: hp('40'), padding: wp('1') }}>
             <Text style={{ fontSize: wp('4.5'), textAlign: 'center', color: 'grey' }}>You have not added any Item in your Cart 😔</Text>
-          </View> :
+          </Content> :
             <FlatList
               data={this.state.cart}
               keyExtractor={(item, index) => index.toString()}
@@ -302,7 +301,6 @@ export default class CartItems extends Component {
               }
              
             />}
-        </Content>
 
 
         {(this.state.done) && <ViewFullModal showButtons={true} state={this.state.isModalVisible} close={this._toggleCloseModal} card={this.state.card} buttons={<CardButton addedToWishList={this.state.card.addedToWishList} addedToCart={this.state.card.addedToCart} sellerId={this.state.card.userId} postId={this.state.card._id} userId={this.state.storageUserId} webToken={this.state.webToken} />} />}

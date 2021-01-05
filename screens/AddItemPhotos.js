@@ -165,6 +165,7 @@ export default class TestApp extends React.Component {
   }
 
   renderImage(item, i) {
+    //console.log("fefe",item.file)
     return (
       <Image
         style={{ height: wp('40'), width: wp('40'), borderRadius: wp('0.8'), marginBottom: hp('1') }}
@@ -195,7 +196,7 @@ export default class TestApp extends React.Component {
         />
 
         <View style={styles.container}>
-          <Content>
+          <ScrollView>
 
             <View style={{ padding: wp('5') }}>
               <View style={[styles.input]}>
@@ -241,7 +242,7 @@ export default class TestApp extends React.Component {
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', padding: wp('5'), justifyContent: 'space-around' }} >
               {this.state.photos.map((item, i) => this.renderImage(item, i))}
             </View>
-          </Content>
+          </ScrollView>
 
         </View>
         <TouchableOpacity disabled={photos.length === 0} style={photos.length === 0 ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.handleFinish()} >

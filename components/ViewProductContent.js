@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Container, Button, Segment, Content } from 'native-base'
+import { View, Text, Image, StyleSheet, TouchableOpacity,ScrollView } from 'react-native';
+import { Container, Button, Segment } from 'native-base'
 import Modal from 'react-native-modal'
 import Swiper from 'react-native-swiper';
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -75,7 +75,7 @@ export default class ViewProductContent extends Component {
                             </Button>
                         </Segment>
                     </View>
-                    <Content>
+                    <ScrollView>
                         <View>
                             <Text style={{ fontSize: wp('4'), paddingLeft: wp('10'), padding: 10 }}>SPECIFICATIONS</Text>
                         </View>
@@ -97,7 +97,7 @@ export default class ViewProductContent extends Component {
                             <Text style={{ fontSize: wp('3.5') }}>Location:{item.location}</Text>
                             {item.school ? <Text style={{ fontSize: wp('3.5') }}>School: {item.school}</Text> : null}
                         </View>
-                    </Content>
+                    </ScrollView>
                 </View>
                 <Modal
                     animationInTiming={1000}

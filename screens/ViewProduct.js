@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text,StyleSheet,StatusBar,Platform,TouchableOpacity,AsyncStorage } from 'react-native';
-import {Container,Content,ActionSheet} from 'native-base'
+import { View, Text,StyleSheet,StatusBar,Platform,ScrollView,AsyncStorage } from 'react-native';
+import {Container,ActionSheet} from 'native-base'
 import {Icon,Header} from 'react-native-elements'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import ViewProductContent from '../components/ViewProductContent'
@@ -122,9 +122,9 @@ class ViewProduct extends Component {
           }}
           />
         
-       <Content style={{}}>
+       <ScrollView style={{}}>
         <ViewProductContent item={item} close={this.closeModal} visibleModal={this.state.visibleModal}/>
-       </Content>
+       </ScrollView>
        <Dialog.Container visible={this.state.dialogVisible}>
           <Dialog.Title>Delete confirmation</Dialog.Title>
           <Dialog.Description>

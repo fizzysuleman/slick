@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity,StyleSheet, RefreshControl, FlatList,ActivityIndicator } from 'react-native';
+import { View, Text, Image, TouchableOpacity,StyleSheet, RefreshControl, FlatList,ActivityIndicator,ScrollView } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Icon, Header } from 'react-native-elements'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { AsyncStorage } from 'react-native';
 import axios from 'react-native-axios'
 import NumberFormat from 'react-number-format';
-import { Content, Container } from 'native-base'
 import StarRating from './StarRating';
 
 
@@ -258,7 +257,7 @@ class StatsView extends Component {
         //console.log(userId._55)
         return (
 
-            <Content style={{ paddingTop: hp('5') }} refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />} >
+            <ScrollView style={{ paddingTop: hp('5') }} refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />} >
                 <View style={{ backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-start', paddingBottom: hp('3'), paddingTop: hp('3'), borderBottomWidth: 2, borderBottomColor: "#e8e8e8" }}>
                     <View
                         style={{ justifyContent: 'flex-start', paddingLeft: hp('1.5') }}>
@@ -288,7 +287,7 @@ class StatsView extends Component {
                     <View style={{ marginTop: 50, backgroundColor: 'white' }}>
                         {this.renderItems()}
                     </View>}
-            </Content>
+            </ScrollView>
         );
     }
 }
@@ -312,7 +311,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom:wp('5')
+        margin:wp('10')
       },
       btnText: {
         color: 'white',

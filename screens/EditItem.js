@@ -3,7 +3,7 @@ import { Text, TextInput, KeyboardAvoidingView, StyleSheet, TouchableOpacity, Sc
 import { Header, Icon, Slider } from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { Container, Content, ActionSheet } from 'native-base';
+import { Container, ActionSheet } from 'native-base';
 import NumberFormat from 'react-number-format';
 import axios from 'react-native-axios'
 import ToggleSwitch from 'toggle-switch-react-native'
@@ -111,7 +111,7 @@ class EditItem extends Component {
                 />
                 <KeyboardAvoidingView behavior='padding' style={{ flex: 1, backgroundColor: '#6699ff', justifyContent: 'center' }}>
 
-                    <Content style={{ padding: wp('7') }}>
+                    <ScrollView style={{ padding: wp('7') }}>
                         <TextInput
                             style={styles.input}
                             placeholder='Name of Item'
@@ -234,7 +234,7 @@ class EditItem extends Component {
                             {loading && <BarIndicator color='#fff' size={hp('4')} count={5} />}
                         </TouchableOpacity>
 
-                    </Content>
+                    </ScrollView>
                 </KeyboardAvoidingView>
             </Container>
 

@@ -3,16 +3,18 @@ import {
   StyleSheet,
   Text,
   View,
-  CameraRoll,
   FlatList,
   Dimensions,
   Button,
-  Platform,
-  PermissionsAndroid
+  Platform
 } from 'react-native';
-import ImageTile from './ImageTile';
-import * as Permissions from 'expo-permissions'
 import * as FileSystem from 'expo-file-system'
+import ImageTile from './ImageTile';
+import CameraRoll from "@react-native-community/cameraroll";
+import * as MediaLibrary from 'expo-media-library';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+
 const { width } = Dimensions.get('window')
 
 export default class ImageBrowser extends React.Component {
@@ -26,15 +28,8 @@ export default class ImageBrowser extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    if (status === 'granted') {
-
+  componentDidMount() {
     this.getPhotos()
-    }
-    else{
-      alert('Camera roll access has been denied')
-    }
   }
 
   selectImage = (index) => {
@@ -50,24 +45,22 @@ export default class ImageBrowser extends React.Component {
   }
 
   getPhotos = () => {
-    let params = { first: 1000,assetType:'Photos',groupTypes:'All'};
-    let paramsAndroid = { first: 1000,assetType:'Photos'};
-
+    let params = { first: 500, mimeTypes: ['image/jpeg'] };
     if (this.state.after) params.after = this.state.after
     if (!this.state.has_next_page) return
-    CameraRoll
-      .getPhotos(Platform.OS=='ios'?params:paramsAndroid)
-      .then(this.processPhotos)
-      
+    // CameraRoll
+    //   .getPhotos(params)
+    //   .then(this.processPhotos)
+    MediaLibrary.getAssetsAsync({first:1000}).then(this.processPhotos)
   }
 
   processPhotos = (r) => {
-    if (this.state.after === r.page_info.end_cursor) return;
-    let uris = r.edges.map(i=> i.node).map(i=> i.image).map(i=>i.uri)
+    if (this.state.after === r.endCursor) return;
+    let uris = r.assets.map(i=> i.uri)
     this.setState({
       photos: [...this.state.photos, ...uris],
-      after: r.page_info.end_cursor,
-      has_next_page: r.page_info.has_next_page
+      after: r.endCursor,
+      has_next_page: r.hasNextPage
     });
   }
 
@@ -82,18 +75,13 @@ export default class ImageBrowser extends React.Component {
       return(selected[index])
     });
 
-
-
-if(Platform.OS==='ios'){
-    selectedPhotos=selectedPhotos.map((uri)=>{
-      const appleId = uri.substring(5, 41);
-      const ext = 'JPG'
-      return `assets-library://asset/asset.${ext}?id=${appleId}&ext=${ext}`;
-     })
-    }
-
-
-
+    if(Platform.OS==='ios'){
+      selectedPhotos=selectedPhotos.map((uri)=>{
+        const appleId = uri.substring(5, 41);
+        const ext = 'JPG'
+        return uri;
+       })
+      }
 
     let files = selectedPhotos
       .map(i => FileSystem.getInfoAsync(i, {md5: true}))
@@ -102,10 +90,8 @@ if(Platform.OS==='ios'){
       .then(imageData=> {
         return imageData.map((data, i) => {
           return {file: selectedPhotos[i], ...data}
-          
         })
       })
-      
     this.props.callback(callbackResult)
   }
 
@@ -123,6 +109,7 @@ if(Platform.OS==='ios'){
         <Button
           title="Done"
           onPress={() => this.prepareCallback()}
+
         />
       </View>
     )
@@ -171,12 +158,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 50,
+    height: hp('10'),
     width: width,
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
-    marginTop: 20
+    marginTop: 30
   },
 })
