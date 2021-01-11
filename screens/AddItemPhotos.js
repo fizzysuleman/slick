@@ -60,6 +60,7 @@ export default class TestApp extends React.Component {
 
   handleFinish = () => {
     const { photos,doneFetchingStorage } = this.state
+
     this.setState({ loading: true })
     if(doneFetchingStorage){
     const data = new FormData();
@@ -88,8 +89,11 @@ export default class TestApp extends React.Component {
     })
       .then(response => response.json())
       .then(async response => {
+        // console.log("gtgrggrg",response.response)
+
         if(response.response){
         const photoUrl = await response.response
+        //console.log(photoUrl)
         
         if (photoUrl.length !== 0) {
           this.postItemDetails(photoUrl)
@@ -103,7 +107,7 @@ export default class TestApp extends React.Component {
       .catch(error => {
         this.setState({ loading: false })
         console.log("upload error", error);
-        alert("Uploa failed!");
+        alert("Upload failed!");
       });
     }
 
@@ -111,7 +115,6 @@ export default class TestApp extends React.Component {
 
   postItemDetails = (imageUrl) => {
     let { name, colors, sizes, tags, location, school, price,negotiable, category,doneFetchingStorage } = this.state;
-    console.log(negotiable)
     if(doneFetchingStorage){
     axios.post('https://slick-project.herokuapp.com/api/addNewPost', {
       nameOfItem: name,
@@ -149,7 +152,7 @@ export default class TestApp extends React.Component {
  
   callback=(callback)=>{
     callback.then((photos)=>{
-      console.log(photos)
+      //console.log(photos)
       this.setState({
         imageBrowserOpen: false,
         photos

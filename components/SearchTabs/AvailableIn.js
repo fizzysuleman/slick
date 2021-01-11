@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import {View,Text} from 'react-native'
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Segment, Content } from 'native-base';
+import {View,Text,ScrollView} from 'react-native'
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Segment } from 'native-base';
 import {Font,AppLoading} from 'expo'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import SchoolSearch from '../SchoolSearch'
@@ -41,12 +41,12 @@ export default class SegmentOutsideHeaderExample extends PureComponent {
             <Text style={{fontSize:wp('3.5'),color:this.state.segmentActive==='School'?'white':'#6699ff',padding:wp('2')}}>School</Text>
           </Button>
         </Segment>
-        {this.state.segmentActive==='All'&&<Content padder>
+        {this.state.segmentActive==='All'&&<ScrollView padder>
         <OtherSearch searchTerm={this.props.searchTerm} searchItems={this.props.searchLocationItems} finished={this.props.finishedLocation} />
-        </Content>}
-        {this.state.segmentActive==='School'&&<Content padder>
+        </ScrollView>}
+        {this.state.segmentActive==='School'&&<ScrollView padder>
           <SchoolSearch searchTerm={this.props.searchTerm} searchItems={this.props.searchSchoolItems} finished={this.props.finishedSchool}/>
-        </Content>}
+        </ScrollView>}
       </Container>
     );
   }

@@ -178,7 +178,7 @@ class AddItem extends Component {
                         </View>
                         {/* disabled={!name || !price || !tags || !location || !category} */}
                         
-                        <TouchableOpacity   style={!name || !price || !tags || !location || !category ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.continueAddItem()}>
+                        <TouchableOpacity disabled={!name || !price || !tags || !location || !category}  style={!name || !price || !tags || !location || !category ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.continueAddItem()}>
                             <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700' }}>Continue to Add Images</Text>
                         </TouchableOpacity>
 

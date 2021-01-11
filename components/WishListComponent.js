@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, Image, RefreshControl, Alert, TouchableOpacity, AsyncStorage } from 'react-native';
-import { Card, Content } from 'native-base'
+import { View, Text, Dimensions, Image, RefreshControl, ScrollView, TouchableOpacity, AsyncStorage } from 'react-native';
+import { Card } from 'native-base'
 import ViewFullModal from './ViewFullModal'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'axios'
@@ -157,7 +157,7 @@ export default class WishListComponent extends Component {
     return wishList.map((card, index) => {
       return (
         <Card key={card._id} style={[{ height: height / 2.5, width: (width / 2) - 12.5, borderColor: 'white', borderWidth: 0.5, borderRadius: 5, backgroundColor: 'white', marginBottom: 5 }]}>
-          <Content>
+          <ScrollView>
             <TouchableOpacity onPress={() => { this._toggleModal(card) }}>
               <View >
                 <Image resizeMode='contain' style={{ height: hp('20'), width: wp('40'), borderRadius: 5, marginLeft: 'auto', marginRight: 'auto', marginTop: 10 }} source={{ uri: card.imageUrl[0] }} />
@@ -181,7 +181,7 @@ export default class WishListComponent extends Component {
             <View style={{ paddingLeft: 12 }}>
               <Text style={{ fontSize: wp('3'), color: '#ff9980' }} onPress={() => { this.showDialog(card.userId, card._id) }} >Remove</Text>
             </View>
-          </Content>
+          </ScrollView>
         </Card>
       )
     }).reverse()
@@ -197,7 +197,7 @@ export default class WishListComponent extends Component {
   render() {
     const { itemName, seller, image, price, wishList,finished } = this.state
     return (
-      <Content refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />}>
+      <ScrollView refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />}>
         <View>
             {!finished&&<View style={{marginTop:hp('40')}}>
                     <Text style={{fontSize:wp('5'),textAlign:'center',color:'grey'}}>Loading Items...</Text>
@@ -226,7 +226,7 @@ export default class WishListComponent extends Component {
           </Dialog.Container>
 
         </View>
-      </Content>
+      </ScrollView>
     );
   }
 }

@@ -5,7 +5,7 @@ import EvilIcon from 'react-native-vector-icons/EvilIcons'
 import MaterialCommuntiyIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import FeatherIcon from 'react-native-vector-icons/Feather'
+import Dialog from "react-native-dialog";
 import { Icon } from 'react-native-elements'
 import { withNavigation, NavigationActions, StackActions } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -20,7 +20,8 @@ export default class CustomDrawerContentComponent extends React.Component {
     this.state = {
       username: '',
       fullName: '',
-      done: false
+      done: false,
+      dialogVisible:false
 
     }
   }
@@ -146,12 +147,19 @@ export default class CustomDrawerContentComponent extends React.Component {
 
         </View>
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-          <TouchableOpacity style={{ flexDirection: 'row', backgroundColor: '#6699ff', paddingTop: wp('3'), paddingBottom: wp('3'), paddingLeft: wp('10') }} onPress={() => this.logOut()}>
+          <TouchableOpacity style={{ flexDirection: 'row', backgroundColor: '#6699ff', paddingTop: wp('3'), paddingBottom: wp('3'), paddingLeft: wp('10') }} onPress={() => this.setState({dialogVisible:true})}>
             <Icon name='logout' type='antdesign' size={wp("5.8")} />
             <Text style={{ fontSize: wp('4'), marginLeft: 4 }}  >Logout</Text>
           </TouchableOpacity>
         </View>
-
+        <Dialog.Container visible={this.state.dialogVisible}>
+          <Dialog.Title>Log out confirmation</Dialog.Title>
+          <Dialog.Description>
+            Are you sure you want to log out ?
+          </Dialog.Description>
+          <Dialog.Button label="Yes" onPress={()=>{this.logOut()}} />
+          <Dialog.Button label="No" onPress={()=>{this.setState({dialogVisible:false})}}/>
+        </Dialog.Container>
 
 
       </Container>

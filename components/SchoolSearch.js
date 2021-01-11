@@ -135,7 +135,7 @@ class School extends Component {
                      <ScrollView>
                     {this.state.searchAvailableInItems.map((item, index) => {
                         return (
-                            <TouchableOpacity onPress={() => this.viewProduct(item,item._id) }  key={item._id} style={styles.emailItem}>
+                            <TouchableOpacity onPress={() => this.viewProduct(item.brandId,item.nameOfItem,item._id) }  key={item._id} style={styles.emailItem}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <View style={{ flexDirection: 'row' }}>
                                         <Image resizeMode="contain" source={{ uri: item.imageUrl[0] }} style={{ width: wp('10'), height: wp('10'), borderRadius: wp('5'), marginRight: wp('2') }} />

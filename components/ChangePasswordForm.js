@@ -94,6 +94,14 @@ class ChangePasswordForm extends Component {
           {!loading&&<Text style={{ textAlign: 'center', color: 'white', fontWeight: '700', fontSize: wp('4') }}>Update</Text>}
           {loading && <BarIndicator color='#fff' size={hp('4')} style={{ paddingVertical: hp('1.4') }} count={5} />}
         </TouchableOpacity>
+        {/* <Dialog.Container visible={this.state.dialogVisible}>
+          <Dialog.Title>Chang confirmation</Dialog.Title>
+          <Dialog.Description>
+            Are you sure you want to delete this item?
+          </Dialog.Description>
+          <Dialog.Button label="Yes" onPress={()=>{this.deletePost()}} />
+          <Dialog.Button label="No" onPress={()=>{this.setState({dialogVisible:false})}}/>
+        </Dialog.Container> */}
       </View>
     );
   }

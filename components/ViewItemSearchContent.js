@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, AsyncStorage, RefreshControl } from 'react-native';
-import { Container, Button, Segment, Content } from 'native-base'
+import { View, Text, Image, StyleSheet, TouchableOpacity, AsyncStorage, RefreshControl ,ScrollView} from 'react-native';
 import Modal from 'react-native-modal'
 import Swiper from 'react-native-swiper';
 import CardButton from './CardButton'
@@ -125,7 +124,7 @@ class ViewItemSearchContent extends Component {
         const { item,done } = this.state
         return (
             this.state.item != [] &&
-            <Content refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />}>
+            <ScrollView refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />}>
                 <View>
                     <View>
                         <View style={{ backgroundColor: '#e8e8e8', marginTop: hp('6'), height: hp('43') }}>
@@ -162,7 +161,7 @@ class ViewItemSearchContent extends Component {
                                 <Text style={{ color: 'grey' }}>({this.state.peopleRated} people rated)</Text>
                             </View>
                         </View>
-                        <Content>
+                        <ScrollView>
                             <View>
                                 <Text style={{ fontSize: wp('4'), paddingLeft: wp('10'), padding: 10 }}>SPECIFICATIONS</Text>
                             </View>
@@ -191,7 +190,7 @@ class ViewItemSearchContent extends Component {
                                 <Text style={{ fontSize: wp('3.5') }}>Location:{item.location}</Text>
                                 {item.school ? <Text style={{ fontSize: wp('3.5') }}>School: {item.school}</Text> : null}
                             </View>
-                        </Content>
+                        </ScrollView>
                     </View>
                     <Modal
                         animationInTiming={1000}
@@ -218,7 +217,7 @@ class ViewItemSearchContent extends Component {
 
 
                 </View>
-            </Content>
+            </ScrollView>
 
         );
     }

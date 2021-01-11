@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage, TouchableOpacity, KeyboardAvoidingView,Platform } from 'react-native';
-import { Container, Thumbnail, ListItem, List, Radio, Left, Right, Body, Content } from 'native-base';
+import { View, Text, AsyncStorage, TouchableOpacity, KeyboardAvoidingView,Platform,ScrollView } from 'react-native';
+import { Container, Thumbnail, ListItem, List, Radio, Left, Right, Body } from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { Icon, Header } from 'react-native-elements'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -328,8 +328,8 @@ class ProfileEdit extends Component {
                 />
                 <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
 
-                    <Content>
-                        <View style={[{ marginTop: 30, flexDirection: "column", marginLeft: hp('2'), marginRight: hp('2'), marginBottom: hp('2'), height: hp('25'), borderBottomWidth: 1, borderBottomColor: '#E8E8E8' }]}>
+                    <ScrollView>
+                    {account==='seller' ?<View style={[{ marginTop: 30, flexDirection: "column", marginLeft: hp('2'), marginRight: hp('2'), marginBottom: hp('2'), height: hp('25'), borderBottomWidth: 1, borderBottomColor: '#E8E8E8' }]}>
                             <View style={{ alignItems: 'center' }}>
                                 <Thumbnail style={{ width: wp('26'), height: wp('26'), borderRadius: wp('13') }} source={imageUrl?{uri:imageUrl}:require('../assets/me.png')} />
                             </View>
@@ -340,7 +340,7 @@ class ProfileEdit extends Component {
                             {/* <View><Text>{photo.file}</Text></View>
                             <View><Text>{imageUrl}</Text></View> */}
 
-                        </View>
+                        </View>:null}
                         {(loading) && <View style={{ paddingTop: 'auto', marginBottom: 'auto' }}>
                             <UIActivityIndicator color={'grey'} size={hp('5')} />
                         </View>}
@@ -448,7 +448,7 @@ class ProfileEdit extends Component {
                                 onInputChange={(website) => this.setState({ website })}
                             /> : null}
                         </View>}
-                    </Content>
+                    </ScrollView>
                 </KeyboardAvoidingView>
             </Container>
         );

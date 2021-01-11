@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
-import {ActivityIndicator,StyleSheet, View, Text, Image, TouchableOpacity, RefreshControl,FlatList } from 'react-native';
+import {ActivityIndicator,StyleSheet, View, Text, Image, TouchableOpacity, RefreshControl,FlatList,ScrollView } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Icon, Header } from 'react-native-elements'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { AsyncStorage } from 'react-native';
 import axios from 'react-native-axios'
 import NumberFormat from 'react-number-format';
-import { Content, Container } from 'native-base'
 import StarRating from './StarRating';
 import RatingModal from './RatingModal';
 import DropdownAlert from 'react-native-dropdownalert'
@@ -297,7 +296,7 @@ class ViewSellerContent extends PureComponent {
 
         return (
             
-            <Content style={{}} refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />} >
+            <ScrollView style={{}} refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this._onRefresh} />} >
                 <View style={{ backgroundColor: 'white', flexDirection: 'row', justifyContent: 'flex-start', paddingBottom: hp('3'), paddingTop: hp('3'), borderBottomWidth: 2, borderBottomColor: "#e8e8e8" }}>
                     <View
                         style={{ justifyContent: 'flex-start', paddingLeft: hp('1.5') }}>
@@ -333,7 +332,7 @@ class ViewSellerContent extends PureComponent {
                 <RatingModal modalVisible={this.state.modalVisible} closeSubmitModal={this._toggleCloseSubmitModal} closeModal={this._toggleCloseModal} sellerId={this.state.sellerId} previouslyRated={this.state.previouslyRated} previousRating={this.state.previousRating} />
                 <DropdownAlert ref={ref => this.dropdown = ref} />
 
-            </Content>
+            </ScrollView>
         );
     }
 }

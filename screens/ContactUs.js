@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar, Platform,TouchableOpacity,AsyncStorage } from 'react-native';
-import { Container, Content, Button, Left, CardItem } from 'native-base';
+import { View, Text, StyleSheet, StatusBar, Platform,TouchableOpacity,AsyncStorage,ScrollView } from 'react-native';
+import { Container, Button, Left, CardItem } from 'native-base';
 import { Icon, Header } from 'react-native-elements'
 import Textarea from 'react-native-textarea';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -72,7 +72,7 @@ export default class ContactUs extends Component {
                     }}
                 />
 
-                <Content>
+                <ScrollView>
                     <View style={styles.textContainer}>
                         <Textarea
                             containerStyle={styles.textareaContainer}
@@ -89,7 +89,7 @@ export default class ContactUs extends Component {
                         {!loading&& <Text style={{textAlign:'center'}} >Submit</Text>}
                         {loading&& <UIActivityIndicator  size={hp('2')} />}
                     </TouchableOpacity>
-                </Content>
+                </ScrollView>
             </Container>
         );
     }
