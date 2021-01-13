@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text,TouchableOpacity,AsyncStorage,Share } from 'react-native';
 import {Icon,Button} from 'react-native-elements'
-import {
-  BallIndicator,
-  BarIndicator,
-  DotIndicator,
-  MaterialIndicator,
-  PacmanIndicator,
-  PulseIndicator,
-  SkypeIndicator,
-  UIActivityIndicator,
-  WaveIndicator,
-} from 'react-native-indicators';
+import {  UIActivityIndicator} from 'react-native-indicators';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'react-native-axios'
 
@@ -199,6 +189,7 @@ export default class CardButtonComponent extends Component {
       //If any thing goes wrong it comes here
       .catch(errorMsg => console.log(errorMsg));
   };
+  
   
 
   render() {

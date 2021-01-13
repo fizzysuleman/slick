@@ -46,7 +46,10 @@
       "supportsTablet": true,
       "infoPlist": {
         "LSApplicationQueriesSchemes": [
-          "whatsapp"
+          "whatsapp",
+          "instagram",
+          "instagram-stories",
+          "snapchat"
         ]
       }
     },

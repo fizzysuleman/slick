@@ -214,7 +214,7 @@ export default class WishListComponent extends Component {
 
           
 
-{(this.state.done)&&<ViewFullModal  showButtons={true} state={this.state.isModalVisible} close={this._toggleCloseModal} card={this.state.card} buttons={<CardButton addedToWishList={this.state.card.addedToWishList} addedToCart={this.state.card.addedToCart} sellerId={this.state.card.userId} postId={this.state.card._id} userId={this.state.storageUserId} webToken={this.state.webToken} />} />}
+{(this.state.done)&&<ViewFullModal  showButtons={true} state={this.state.isModalVisible} showScreenshot={this.state.isModalVisible} close={this._toggleCloseModal} card={this.state.card} buttons={<CardButton addedToWishList={this.state.card.addedToWishList} addedToCart={this.state.card.addedToCart} sellerId={this.state.card.userId} postId={this.state.card._id} userId={this.state.storageUserId} webToken={this.state.webToken} />} />}
 
           <Dialog.Container visible={this.state.dialogVisible}>
             <Dialog.Title>Delete confirmation</Dialog.Title>

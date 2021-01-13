@@ -25,6 +25,7 @@
     "js-yaml": "^3.13.1",
     "link": "^0.1.5",
     "native-base": "2.12.0",
+    "pod-install": "^0.1.14",
     "react": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
     "react-native-action-sheet": "^2.2.0",

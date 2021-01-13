@@ -98,7 +98,7 @@ export default class CardComponent extends Component {
                 </Card>
 
                 {/* Modalllllllllllllllllllllllllllllllllllll */}
-                <ViewFullModal state={this.state.isModalVisible} close={this._toggleCloseModal} card={this.state.card} buttons={this.props.buttons} showButtons={false} />
+                <ViewFullModal state={this.state.isModalVisible} close={this._toggleCloseModal} card={this.state.card} buttons={this.props.buttons} showButtons={false} showScreenshot={this.state.isModalVisible} />
             </View>
         );
     }
