@@ -234,10 +234,7 @@ class ViewFullModal extends PureComponent {
                                 <Text style={{ fontSize: wp('3.5') }}>Location:{card.location}</Text>
                                 {card.school ? <Text style={{ fontSize: wp('3.5') }}>School: {card.school}</Text> : null}
                             </View>
-                            {(Platform.OS == 'ios') ? <View style={{ alignItems: 'center' }}>
-                                <Image style={{ height: wp('7'), width: wp('7') }} source={require('../assets/icon.png')} />
-                                <Text style={{ fontSize: wp('4'), textAlign: 'center', color: 'grey' }}>Slick</Text>
-                            </View> : null}
+                            
                         </View>
                     </ScrollView>
                 </Modal>
@@ -260,7 +257,7 @@ class ViewFullModal extends PureComponent {
                                 {card.school?<Text style={{ fontSize: wp('3%'),paddingTop:hp('0.5') }}  >School: {card.school}</Text>:null}
 
                             </Right>
-                            <View style={{ marginTop: 0 }}>
+                            <View style={{ marginTop: 0 ,justifyContent:'space-between'}}>
                                 <NumberFormat
                                     value={card.price}
                                     displayType={'text'}
@@ -270,7 +267,12 @@ class ViewFullModal extends PureComponent {
                                     renderText={value =>
                                         <Text style={{ paddingTop: 5, paddingBottom: 5, paddingLeft: 5, paddingRight: 5, fontWeight: 'bold', color: 'white', backgroundColor: '#6699ff', fontSize: wp('3.50%'), borderBottomLeftRadius: 5, borderTopRightRadius: 5, }}>{value}</Text>}
                                 />
+                                 {(Platform.OS == 'ios') ? <View style={{ alignItems: 'center' }}>
+                                <Image style={{ height: wp('5.5'), width: wp('5.5') }} source={require('../assets/icon.png')} />
+                                <Text style={{ fontSize: wp('2'), textAlign: 'center', color: 'grey' }}>Slick</Text>
+                            </View> : null}
                             </View>
+                           
                         </TouchableOpacity>
 
 

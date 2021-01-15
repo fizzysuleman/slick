@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,StyleSheet,StatusBar,Platform,ScrollView,AsyncStorage } from 'react-native';
+import { View, Text,StyleSheet,StatusBar,Platform,ScrollView,AsyncStorage,Share } from 'react-native';
 import {Container,ActionSheet} from 'native-base'
 import {Icon,Header} from 'react-native-elements'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -11,6 +11,7 @@ import {withNavigation} from 'react-navigation'
 var BUTTONS =
 [
 'Edit',
+'Share link',
 'Delete',
 'Cancel'
 ];
@@ -20,7 +21,7 @@ var BUTTONS =
  
 
 // var DESTRUCTIVE_INDEX = 1;
-var CANCEL_INDEX = 2;
+var CANCEL_INDEX = 3;
 
 class ViewProduct extends Component {
   constructor(props) {
@@ -61,7 +62,20 @@ class ViewProduct extends Component {
             postId:item._id
         })
         }
-        else if(buttonIndex==1){
+        else if(buttonIndex==1)
+        {
+          let encodedLink=encodeURIComponent(`slick://share/item/${item.brandId}/${item.nameOfItem}/${item._id}`)
+          console.log(encodedLink)
+      
+          Share.share({
+            message:`https://slick-project.herokuapp.com/api/deeplink?url=${encodedLink}`,
+          })
+            //after successful share return result
+            .then(result => console.log(result))
+            //If any thing goes wrong it comes here
+            .catch(errorMsg => console.log(errorMsg));
+        }
+        else if(buttonIndex==2){
           this.setState({dialogVisible:true})
         }
         //this.setState({ category: BUTTONS[buttonIndex] });

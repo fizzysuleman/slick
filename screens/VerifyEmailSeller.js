@@ -81,7 +81,7 @@ this.setState({spinner:true})
      }
      else if (!isValid){
       this.setState({spinner:false})
-       alert('You entered the wrong token,check your email and try again')
+       alert('You entered the wrong token,check your messages and try again')
      }
      
     
@@ -92,7 +92,7 @@ this.setState({spinner:true})
       <View style={[{ flex: 1 }]}>
         <KeyboardAvoidingView behavior='padding' style={[{ flex: 1, backgroundColor: '#ff8b33' }]}>
           <View style={[{marginBottom:hp('10'),marginTop:hp('25')}]}>
-            <Text style={{textAlign:'center',fontSize:wp('4.5'),color:'white'}} >A verification code has been sent to <Text style={{color:'#e6e600'}}>{this.state.email}</Text>, type the code below to continue.</Text>
+            <Text style={{textAlign:'center',fontSize:wp('4.5'),color:'white'}} >A verification code has been sent to <Text style={{color:'#e6e600'}}>{this.state.phone}</Text>, type the code below to continue.</Text>
           </View>
           <CodeInput
             ref="codeInputRef2"
