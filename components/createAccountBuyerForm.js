@@ -100,6 +100,21 @@ class LoginTestForm extends Component {
                     ref={(input) => this.lastNameInput = input}
                     onSubmitEditing={() => this.emailInput.focus()}
                 />
+
+
+                <TextInput
+                    style={styles.input}
+                    placeholder='E-mail Address'
+                    placeholderTextColor='rgba(255,255,255,0.7)'
+                    returnKeyType='next'
+                    keyboardType='email-address'
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    onChangeText={(email) => this.setState({ email })}
+                    onSubmitEditing={() => this.phoneInput.focus()}
+                    ref={(input) => this.emailInput = input}
+
+                />
                
 
                 <PhoneInput
