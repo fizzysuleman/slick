@@ -268,7 +268,7 @@ class ViewFullModal extends PureComponent {
                                         <Text style={{ paddingTop: 5, paddingBottom: 5, paddingLeft: 5, paddingRight: 5, fontWeight: 'bold', color: 'white', backgroundColor: '#6699ff', fontSize: wp('3.50%'), borderBottomLeftRadius: 5, borderTopRightRadius: 5, }}>{value}</Text>}
                                 />
                                  {(Platform.OS == 'ios') ? <View style={{ alignItems: 'center' }}>
-                                <Image style={{ height: wp('5.5'), width: wp('5.5') }} source={require('../assets/icon.png')} />
+                                <Image style={{ height: wp('6'), width: wp('6') }} source={require('../assets/newIcon.png')} />
                                 <Text style={{ fontSize: wp('2'), textAlign: 'center', color: 'grey' }}>Slick</Text>
                             </View> : null}
                             </View>

@@ -20,8 +20,7 @@ export default class componentName extends Component {
     <View style={{flex:1}}>
       <KeyboardAvoidingView behavior='padding' style={{flex:1,backgroundColor:'#6699ff'}}>
       <View style={{alignItems:'center',flexGrow:1,justifyContent:'center',paddingTop:hp('5')}}>
-            <Image style={{height:hp('10'),width:wp('70'),borderRadius:wp('3')}} source={require('../assets/fullicon.png')}/>
-            <Text style={{color:'#fff',marginTop:hp('2'),opacity:0.6}}>Dress Slicky!!, Stay Slicky!!  </Text>
+            <Image style={{height:wp('20'),width:wp('20'),borderRadius:wp('10')}} source={require('../assets/newIcon.png')}/>
         </View>
        
         <LoginTestForm showStatus={(color,message)=>this.showStatus(color,message)}/>

@@ -8,7 +8,6 @@ import NumberFormat from 'react-number-format';
 import ToggleSwitch from 'toggle-switch-react-native'
 
 
-
 var BUTTONS = ["Clothes", "Shoes", "Bag", "Cosmetics", "Glasses", "Jewllery", "Others"];
 var DESTRUCTIVE_INDEX = 3;
 var CANCEL_INDEX = 7;
@@ -62,7 +61,9 @@ class AddItem extends Component {
                         height: hp('12%'),
                     }}
                 />
-                <KeyboardAvoidingView behavior='padding' style={{ flex: 1, backgroundColor: '#6699ff', justifyContent: 'center' }}>
+                <KeyboardAvoidingView 
+                //keyboardVerticalOffset={hp('100')}
+                behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1, backgroundColor: '#6699ff', justifyContent: 'center',height:hp('100') }}>
 
                     <ScrollView style={{ padding: wp('7') }}>
                         <TextInput

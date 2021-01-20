@@ -38,7 +38,7 @@ let tipsArray = [
   'Add Item to your wishlist to hype trending/slick products',
   'You can contact a Seller either by Whatsapp,Message or Call in the Cart section',
   'Always consider a Seller rating before buying an item, to prevent contacting a fraud person',
-  'Dress Slick and stay Slick 😉',
+  'Dress Slick and Stay Slick 😉',
   'You can report Sellers for selling illegal goods',
   'Electronics are not sold on slick 🚫...please beware and report',
   'Any conversation made outside the app is not monitored , please note⚠️',

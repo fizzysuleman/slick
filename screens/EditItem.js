@@ -103,7 +103,7 @@ class EditItem extends Component {
                         height: hp('12%'),
                     }}
                 />
-                <KeyboardAvoidingView behavior='padding' style={{ flex: 1, backgroundColor: '#6699ff', justifyContent: 'center' }}>
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1, backgroundColor: '#6699ff', justifyContent: 'center' }}>
 
                     <ScrollView style={{ padding: wp('7') }}>
                         <TextInput

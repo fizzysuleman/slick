@@ -105,7 +105,7 @@ submitBuyer=async()=>{
         const { firstName, lastName, email, phone, username, password, confirmPassword, homeAddress, date,terms,loading } = this.state
         return (
 
-            <View style={{ padding: wp('7'),marginTop:hp('3') }}>
+            <ScrollView style={{ padding: wp('7'),marginTop:hp('3') }}>
                 <TextInput
                     style={styles.input}
                     placeholder='Username'
@@ -200,7 +200,7 @@ submitBuyer=async()=>{
                 {!loading && <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700', fontSize: wp('4') }}>Finish! 👌</Text>}
                     {loading && <BarIndicator color='#fff' size={hp('4')} style={{ paddingVertical: hp('1.4') }} count={5} />}
                 </TouchableOpacity>
-            </View>
+            </ScrollView>
         );
     }
 }

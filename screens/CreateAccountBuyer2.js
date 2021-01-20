@@ -31,7 +31,7 @@ export default class componentName extends Component {
     const {firstName,lastName,email,phone,tokenId}=this.state
     return (
     <View style={{flex:1}}>
-      <KeyboardAvoidingView behavior='padding' style={{flex:1,backgroundColor:'#6699ff',justifyContent:'center'}}>
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex:1,backgroundColor:'#6699ff',justifyContent:'center'}}>
         
         
         <Form firstName={firstName} lastName={lastName} email={email} phone={phone} 

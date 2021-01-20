@@ -81,7 +81,7 @@ class LoginTestForm extends Component {
     render() {
         let { loading } = this.state
         return (
-            <View style={{ padding: wp('7') }}>
+            <ScrollView style={{ padding: wp('7') }}>
                 <TextInput
                     style={styles.input}
                     placeholder='Firstname'
@@ -134,7 +134,7 @@ class LoginTestForm extends Component {
                     {!loading && <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700', fontSize: wp('4') }}>Continue</Text>}
                     {loading && <BarIndicator color='#fff' size={hp('4')} style={{ paddingVertical: hp('1.4') }} count={5} />}
                 </TouchableOpacity>
-            </View>
+            </ScrollView>
         );
     }
 }
