@@ -32,11 +32,9 @@ export default class componentName extends Component {
     const {firstName,lastName,email,phone,tokenId}=this.state
     return (
     <View style={{flex:1}}>
-      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex:1,backgroundColor:'#ff8b33',justifyContent:'center'}}>
         
         
         <Form firstName={firstName} lastName={lastName} email={email} phone={phone} tokenId={tokenId}/>
-      </KeyboardAvoidingView>
       <TouchableOpacity style={{alignItems:'center',justifyContent:'center',backgroundColor:'#ff6f00',height:40}} onPress={()=>this.onBack()} >
           <Text style={{color:'white'}} >Already have an account? Login</Text>
       </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, AsyncStorage, TouchableOpacity, TextInput, StyleSheet,Linking } from 'react-native';
+import { View, Text, Image, AsyncStorage, TouchableOpacity, TextInput, StyleSheet,Linking,ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import DatePicker from 'react-native-datepicker'
 import CheckBox from 'react-native-checkbox';
@@ -196,7 +196,7 @@ submitBuyer=async()=>{
 
 
 
-                <TouchableOpacity disabled={!firstName || !lastName || !email || !phone || !username || !homeAddress || !password || !confirmPassword || !date||!terms} style={!firstName || !lastName || !email || !phone || !username || !homeAddress || !password || !confirmPassword || !date ||!terms ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.onSubmit()}>
+                <TouchableOpacity disabled={!firstName || !lastName || !email || !phone || !username || !homeAddress || !password || !confirmPassword || !date||!terms||loading} style={!firstName || !lastName || !email || !phone || !username || !homeAddress || !password || !confirmPassword || !date ||!terms ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.onSubmit()}>
                 {!loading && <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700', fontSize: wp('4') }}>Finish! 👌</Text>}
                     {loading && <BarIndicator color='#fff' size={hp('4')} style={{ paddingVertical: hp('1.4') }} count={5} />}
                 </TouchableOpacity>

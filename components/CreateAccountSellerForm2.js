@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, AsyncStorage,ScrollView, TouchableOpacity, TextInput, StyleSheet,Linking } from 'react-native';
+import { View, Text, Image, AsyncStorage,ScrollView, TouchableOpacity, TextInput, StyleSheet,Linking,KeyboardAvoidingView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import DatePicker from 'react-native-datepicker'
 import CheckBox from 'react-native-checkbox';
@@ -116,7 +116,9 @@ class LoginTestForm extends Component {
         const { firstName, lastName, email, phone, brandName, password, confirmPassword, homeAddress,location,sells,website, date,terms,loading } = this.state
         return (
 
-            <ScrollView style={{ padding: wp('7') }}>
+            <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex:1,backgroundColor:'#ff8b33',justifyContent:'center',height:hp('100')}}>
+
+            <ScrollView style={{ padding: wp('7'),marginTop:hp('3') }}>
                 <TextInput
                     style={styles.input}
                     placeholder='Brandname'
@@ -240,11 +242,13 @@ class LoginTestForm extends Component {
 
 
 
-                <TouchableOpacity disabled={!firstName || !lastName || !email || !phone || !brandName || !homeAddress || !password || !confirmPassword ||!location||!sells|| !date||!terms} style={!firstName || !lastName || !email || !phone || !brandName || !homeAddress || !password || !confirmPassword || !date ||!terms ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.onSubmit()}>
+                <TouchableOpacity disabled={!firstName || !lastName || !email || !phone || !brandName || !homeAddress || !password || !confirmPassword ||!location||!sells|| !date||!terms ||loading} style={!firstName || !lastName || !email || !phone || !brandName || !homeAddress || !password || !confirmPassword || !date ||!terms ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.onSubmit()}>
                 {!loading && <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700', fontSize: wp('4') }}>Finish! 👌</Text>}
                     {loading && <BarIndicator color='#fff' size={hp('4')}  count={5} />}
                 </TouchableOpacity>
             </ScrollView>
+            </KeyboardAvoidingView>
+
         );
     }
 }
@@ -265,14 +269,15 @@ const styles = StyleSheet.create({
         padding:wp('7'),
         borderRadius:wp('2'),
         backgroundColor:'#ffe2cc',
-        paddingVertical: hp('2')
+        paddingVertical: hp('2'),marginBottom:hp('5')
 
     },
     buttonEnabled:{
         padding:wp('7'),
         borderRadius:wp('2'),
         backgroundColor:'#ff6f00',
-        paddingVertical: hp('2')
+        paddingVertical: hp('2'),marginBottom:hp('5')
+
     }
 })
 

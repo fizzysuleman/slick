@@ -25,7 +25,7 @@ class Seller extends PureComponent {
   
 
   render() {
- // console.log(userId._W)
+  console.log(userId._W)
     return (
 
     this.props.searchTerm.length>0 &&   <ScrollView>

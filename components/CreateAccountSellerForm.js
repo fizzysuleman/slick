@@ -144,7 +144,7 @@ class LoginTestForm extends Component {
                 />
 
 
-                <TouchableOpacity disabled={!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.phone} style={!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.phone ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.onSubmit()}>
+                <TouchableOpacity disabled={!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.phone||loading} style={!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.phone ? styles.buttonDisabled : styles.buttonEnabled} onPress={() => this.onSubmit()}>
                     {!loading && <Text style={{ textAlign: 'center', color: 'white', fontWeight: '700', fontSize: wp('4') }}>Continue</Text>}
                     {loading && <BarIndicator color='#fff' size={hp('4')} style={{ paddingVertical: hp('1.4') }} count={5} />}
                 </TouchableOpacity>

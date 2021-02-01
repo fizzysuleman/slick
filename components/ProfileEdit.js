@@ -153,8 +153,6 @@ class ProfileEdit extends Component {
             phone: phone,
             homeAddress: homeAddress,
             username: username,
-            imageUrl:imageUrl
-
         }
             , {
                 headers: {
@@ -326,7 +324,7 @@ class ProfileEdit extends Component {
                         height: hp('12%'),
                     }}
                 />
-                <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
 
                     <ScrollView>
                     {account==='seller' ?<View style={[{ marginTop: 30, flexDirection: "column", marginLeft: hp('2'), marginRight: hp('2'), marginBottom: hp('2'), height: hp('25'), borderBottomWidth: 1, borderBottomColor: '#E8E8E8' }]}>
